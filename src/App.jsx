@@ -7,6 +7,10 @@ import Pin from "./components/Pin";
 import ScrollTriggerGSAP from "./components/ScrollTriggerGSAP";
 import Svg from "./components/Svg";
 import MouseMove from "./components/MouseMove";
+import PinP from "./practice/PinP";
+import NavbarAni from "./components/NavbarAni";
+import TextGsap from "./components/TextGsap";
+import Demo from "./components/Demo";
 const App = () => {
   return (
     <>
@@ -21,7 +25,12 @@ const App = () => {
       {/* <ScrollTriggerGSAP /> */}
       {/* <Pin /> */}
       {/* <Svg /> */}
-      <MouseMove />
+      {/* <MouseMove /> */}
+      {/* <NavbarAni /> */}
+      {/* <TextGsap /> */}
+      <Demo />
+
+      {/* <PinP />   */}
     </>
   );
 };

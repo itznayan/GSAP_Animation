@@ -1,34 +1,38 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useState } from "react";
+import { useRef } from "react";
 
 const Svg = () => {
-  const [path, setPath] = useState();
-  const [final, setFinal] = useState();
+  const pathRef = useRef(null);
 
-  const handleEnter = (e) => {
-    const initialPath = `M 10 100 Q ${e.clientX} ${e.clientY} 990 100`;
-    setPath(initialPath);
-    gsap.to("svg path", {
-      attr: { d: initialPath },
-      duration: 2,
+  const handleMove = (e) => {
+    const path = `M 10 100 Q ${e.clientX} ${e.clientY * 2} 990 100`;
+    gsap.to(pathRef.current, {
+      attr: { d: path },
+      duration: 0.3,
+      ease: "power3.out",
     });
   };
-  const handleLeave = (e) => {
-    var finalPath = `M 10 100 Q 250 100 990 100`;
-    setFinal(finalPath);
+
+  const handleLeave = () => {
+    const finalPath = `M 10 100 Q 250 100 990 100`;
+    gsap.to(pathRef.current, {
+      attr: { d: finalPath },
+      duration: 0.6,
+      ease: "elastic.out(1,0.2)",
+    });
   };
 
   return (
-    <div className="h-screen w-full bg-zinc-900 ">
+    <div className="h-screen w-full bg-zinc-900">
       <div
         id="string"
-        onMouseEnter={handleEnter}
+        onMouseMove={handleMove}
         onMouseLeave={handleLeave}
         className="bg-black"
       >
-        <svg width="1000" height="200">
+        <svg className="svg" width="1000" height="200">
           <path
+            ref={pathRef}
             d="M 10 100 Q 250 100 990 100"
             stroke="white"
             fill="transparent"
