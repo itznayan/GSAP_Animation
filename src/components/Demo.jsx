@@ -73,7 +73,6 @@ const Demo = () => {
     var tl3 = gsap.timeline({
       scrollTrigger: {
         trigger: ".banner",
-        markers: true,
         start: "top 40%",
         end: "bottom 80%",
         scroller: "body",
